@@ -130,9 +130,9 @@
             <div class="container-chat">
 
               <section v-for='(valore,index) in user_selected.messages' :class="valore.status" >
-                <div class="user " :class='{valore.status == "sent" ? green:"green" , white}'>
-                  <p>hai portato a spasso il cane?</p>
-                  <div class="data">10/01/2020 15:30:55</div>
+                <div class="user "  :class="valore.status=='sent'?'green':'white' ">
+                  <p>{{valore.message}}</p>
+                  <div class="data">{{valore.date}}</div>
                 </div>
               </section>
               <!-- <section class="sent" >
