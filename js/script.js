@@ -83,12 +83,68 @@ const app = new Vue ({
               }
           ],
       },
-    ]
+    ],
+
+    last_msg:[],
+    last_date:[],
+
+    green:'green',
+    white:'white',
+
+
+    user_selected:
+      {
+        name: 'Michele',
+        avatar: '_1',
+        visible: true,
+        messages: [
+          {
+            date: '10/01/2020 15:30:55',
+            message: 'Hai portato a spasso il cane?',
+            status: 'sent'
+          },
+          {
+            date: '10/01/2020 15:50:00',
+            message: 'Ricordati di dargli da mangiare',
+            status: 'sent'
+          },
+          {
+            date: '10/01/2020 16:15:22',
+            message: 'Tutto fatto!',
+            status: 'received'
+          }
+        ],
+      },
+    
+
+    last_date_selected:'10/01/2020 16:15:22',
+    
   },
 
-  mounted(){},
 
-  methods:{}
+  mounted(){
+    
+    for (let contact in this.contacts){
+      this.last_msg.push(this.contacts[contact].messages[this.contacts[contact].messages.length-1].message.substring(0,30)+'...')
+    }
+    for (let contact in this.contacts){
+      this.last_date.push(this.contacts[contact].messages[this.contacts[contact].messages.length-1].date)
+    }
+    
+    
+    
+  },
+  
+  methods:{
+    
+    selected(contact){
+      this.user_selected=contact;
+      console.log(this.user_selected);
+      this.last_date_selected=(this.user_selected.messages[this.user_selected.messages.length-1].date)
+    }
+    
+    
+  }
 
 });
 

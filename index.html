@@ -67,12 +67,12 @@
             </section>
             <section class="utenti">
 
-              <div v-for='(contact,index) in contacts' class="utente">
-                <img :src="img/avatar_1.jpg" alt="">
+              <div v-for='(contact,index) in contacts' class="utente"  @click='selected(contact)' >
+                <img :src="`img/avatar${contact.avatar}.jpg`" alt="">
                 <div class="utente-more">
-                  <div class="nome">Michele</div>
-                  <div class="ultimo-msg">Tutto fatto!...</div>
-                  <div class="data"> 10/01/2020 alle 13.45</div>
+                  <div class="nome">{{contact.name}}</div>
+                  <div class="ultimo-msg">{{last_msg[index]}}</div>
+                  <div class="data"> {{last_date[index]}}</div>
                 </div>
               </div>
 
@@ -113,10 +113,10 @@
         <div class="box-right">
           <div class="top">
             <div class="avatar">
-              <img src="img/avatar_1.jpg" alt="">
+              <img :src="`img/avatar${user_selected.avatar}.jpg`" alt="">
               <div class="avatar-info">
-                <div class="nome">Michele</div>
-                <div class="data">ultimo accesso oggi alle 10/01/2020 alle 13.45</div>
+                <div class="nome">{{user_selected.name}}</div>
+                <div class="data">ultimo accesso oggi alle {{last_date_selected}}</div>
               </div>
             </div>
             <div class="utilities">
@@ -129,13 +129,13 @@
           <div class="main">
             <div class="container-chat">
 
-              <section class="sent" >
-                <div class="user green">
+              <section v-for='(valore,index) in user_selected.messages' :class="valore.status" >
+                <div class="user " :class='{valore.status == "sent" ? green:"green" , white}'>
                   <p>hai portato a spasso il cane?</p>
                   <div class="data">10/01/2020 15:30:55</div>
                 </div>
               </section>
-              <section class="sent" >
+              <!-- <section class="sent" >
                 <div class="user green">
                   <p>hai portato a spasso il cane?</p>
                   <div class="data">10/01/2020 15:30:55</div>
@@ -146,7 +146,7 @@
                   <p>hai portato a spasso il cane?</p>
                   <div class="data">10/01/2020 15:30:55</div>
                 </div>
-              </section>
+              </section> -->
               
               
   
