@@ -67,8 +67,8 @@
             </section>
             <section class="utenti">
 
-              <div class="utente">
-                <img src="img/avatar_1.jpg" alt="">
+              <div v-for='(contact,index) in contacts' class="utente">
+                <img :src="img/avatar_1.jpg" alt="">
                 <div class="utente-more">
                   <div class="nome">Michele</div>
                   <div class="ultimo-msg">Tutto fatto!...</div>
@@ -76,7 +76,7 @@
                 </div>
               </div>
 
-              <div class="utente">
+              <!-- <div class="utente">
                 <img src="img/avatar_2.jpg" alt="">
                 <div class="utente-more">
                   <div class="nome">Antonio</div>
@@ -101,7 +101,7 @@
                   <div class="ultimo-msg">Tutto fatto!...</div>
                   <div class="data"> 10/01/2020 alle 13.45</div>
                 </div>
-              </div>
+              </div> -->
 
             </section>
 
@@ -125,21 +125,23 @@
               <i class="fas fa-ellipsis-v"></i>
             </div>
           </div>
+
           <div class="main">
             <div class="container-chat">
-              <section class="end" >
+
+              <section class="sent" >
                 <div class="user green">
                   <p>hai portato a spasso il cane?</p>
                   <div class="data">10/01/2020 15:30:55</div>
                 </div>
               </section>
-              <section class="end" >
+              <section class="sent" >
                 <div class="user green">
                   <p>hai portato a spasso il cane?</p>
                   <div class="data">10/01/2020 15:30:55</div>
                 </div>
               </section>
-              <section class="start" >
+              <section class="received" >
                 <div class="user white">
                   <p>hai portato a spasso il cane?</p>
                   <div class="data">10/01/2020 15:30:55</div>

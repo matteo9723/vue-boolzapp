@@ -102,11 +102,11 @@ i{
   display: flex;
 }
 
-.end{
+.sent{
   justify-content: end;
 }
 
-.start{
+.received{
   justify-content: start;
 }
 
