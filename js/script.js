@@ -90,6 +90,7 @@ const app = new Vue ({
 
     green:'green',
     white:'white',
+    x:'',
     
     
     
