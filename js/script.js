@@ -90,13 +90,14 @@ const app = new Vue ({
 
     green:'green',
     white:'white',
-
-
+    
+    
+    
     user_selected:
-      {
-        name: 'Michele',
-        avatar: '_1',
-        visible: true,
+    {
+      name: 'Michele',
+      avatar: '_1',
+      visible: true,
         messages: [
           {
             date: '10/01/2020 15:30:55',
@@ -130,6 +131,10 @@ const app = new Vue ({
     for (let contact in this.contacts){
       this.last_date.push(this.contacts[contact].messages[this.contacts[contact].messages.length-1].date)
     }
+  
+     
+    
+    
     
     
     
@@ -137,13 +142,35 @@ const app = new Vue ({
   
   methods:{
     
-    selected(contact){
+    selected(contact,index){
       this.user_selected=contact;
       console.log(this.user_selected);
-      this.last_date_selected=(this.user_selected.messages[this.user_selected.messages.length-1].date)
+      this.last_date_selected=(this.user_selected.messages[this.user_selected.messages.length-1].date);
+      
+    },
+    
+    saluto(x){
+      this.user_selected.messages.push(
+       {
+        date: '10/01/2020 16:15:22',
+        message: x,
+        status: 'sent'
+       });
+      
+      let z = setInterval(() => {
+
+        this.user_selected.messages.push(
+          {
+           date: '10/01/2020 16:15:22',
+           message: 'ok',
+           status: 'received'
+          });
+        clearInterval(z);
+
+      }, 1000);
+
+      
     }
-    
-    
   }
 
 });

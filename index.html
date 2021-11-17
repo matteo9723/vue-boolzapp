@@ -67,7 +67,9 @@
             </section>
             <section class="utenti">
 
-              <div v-for='(contact,index) in contacts' class="utente"  @click='selected(contact)' >
+              <div v-for='(contact,index) in contacts' class="utente" 
+               :class='{"active": contact===user_selected}' 
+               @click='selected(contact)'  >
                 <img :src="`img/avatar${contact.avatar}.jpg`" alt="">
                 <div class="utente-more">
                   <div class="nome">{{contact.name}}</div>
@@ -155,7 +157,7 @@
           </div>
           <div class="bottom">
             <i class="far fa-smile"></i>
-            <input type="text" placeholder="scrivi un messaggio">
+            <input v-model="valore" @keyup.enter=saluto(valore) type="text" placeholder="scrivi un messaggio">
             <i class="fas fa-microphone"></i>
           </div>
         </div>
