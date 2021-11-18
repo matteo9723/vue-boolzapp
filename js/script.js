@@ -1,3 +1,15 @@
+// init Day js
+
+
+// per estendere i plugin la sintassi è
+//dayjs.extend(window.dayjs_plugin_NOME_PLUGIN);
+dayjs.extend(window.dayjs_plugin_customParseFormat);
+dayjs.extend(window.dayjs_plugin_relativeTime);
+
+//locale
+dayjs.locale('it');
+
+
 const app = new Vue ({
   
   el: '#app',
@@ -159,10 +171,16 @@ const app = new Vue ({
 
         this.user_selected.messages.push(
           {
-           date: '10/01/2020 16:15:22',
+           date: dayjs().format("DD/MM/YYYY HH:mm:ss"),
            message: 'ok',
            status: 'received'
           });
+        this.last_date_selected= dayjs().format("DD/MM/YYYY HH:mm:ss");
+        for(let i in this.contacts){
+          if(this.user_selected.name==this.contacts[i].name){
+            this.contacts[i].messages[ this.contacts[i].messages.length-1].date=dayjs().format("DD/MM/YYYY HH:mm:ss");
+          }
+        }
         clearInterval(bot);
 
       }, 1000);
