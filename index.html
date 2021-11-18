@@ -71,13 +71,13 @@
             <section class="utenti">
 
               <div v-for='(contact,index) in contacts' class="utente" 
-               :class='{"active": contact===user_selected}' 
+               :class='{"active": contact===contacts[user_active]}' 
                v-if='contact.visible==true'
-               @click='selected(contact)'  >
+               @click='selected(contact,index)'  >
                 <img :src="`img/avatar${contact.avatar}.jpg`" alt="">
                 <div class="utente-more">
                   <div class="nome">{{contact.name}}</div>
-                  <div class="ultimo-msg">{{last_msg[index]}}</div>
+                  <div class="ultimo-msg">{{contact.messages[contact.messages.length-1].message}}</div>
                   <div class="data"> {{contact.messages[contact.messages.length-1].date}}</div>
                 </div>
               </div>
@@ -109,10 +109,10 @@
 
             <div class="container-chat">
 
-              <section v-for='(valore,index) in user_selected.messages' :class="valore.status" >
-                <div class="user "  :class="valore.status=='sent'?'green':'white' ">
-                  <p>{{valore.message}}</p>
-                  <div class="data">{{valore.date}}</div>
+              <section v-for='(message,index) in contacts[user_active].messages' :class="message.status" >
+                <div class="user "  :class="message.status=='sent'?'green':'white' ">
+                  <p>{{message.message}}</p>
+                  <div class="data">{{message.date}}</div>
                 </div>
               </section>
         

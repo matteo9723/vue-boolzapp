@@ -68,7 +68,6 @@
 .box-right .main{
   height: calc(100% - 100px);
   width: 100%;
-  margin-right: 10px;
   background-color: white;
 }
 
@@ -329,7 +328,7 @@ p{
 
 .box-right .main{
   background-image:url('/img/mine.jpg');
-  overflow:auto;
+  overflow-y:scroll;
 }
 
  /* bottom  */

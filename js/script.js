@@ -124,7 +124,8 @@ const app = new Vue ({
     last_msg:[],
     last_date:[],
     last_date_selected:'10/01/2020 16:15:22',
-
+    user_active:0,
+    
     // classi_messaggi:
 
     green:'green',
@@ -156,31 +157,31 @@ const app = new Vue ({
       this.user_selected=contact;
       console.log(this.user_selected);
       this.last_date_selected=(this.user_selected.messages[this.user_selected.messages.length-1].date);
-      
+      this.user_active=index;
+      console.log(this.user_active);
     },
     
     printNewMsg(msg){
-      this.user_selected.messages.push(
+      this.contacts[this.user_active].messages.push(
        {
-        date: '10/01/2020 16:15:22',
+        date: dayjs().format("DD/MM/YYYY HH:mm:ss"),
         message: msg,
         status: 'sent'
        });
       
       let bot = setInterval(() => {
 
-        this.user_selected.messages.push(
-          {
-           date: dayjs().format("DD/MM/YYYY HH:mm:ss"),
-           message: 'ok',
-           status: 'received'
-          });
         this.last_date_selected= dayjs().format("DD/MM/YYYY HH:mm:ss");
         for(let i in this.contacts){
           if(this.user_selected.name==this.contacts[i].name){
             this.contacts[i].messages[ this.contacts[i].messages.length-1].date=dayjs().format("DD/MM/YYYY HH:mm:ss");
-          }
-        }
+          }; 
+        };
+        this.contacts[this.user_active].messages.push( {
+          date: dayjs().format("DD/MM/YYYY HH:mm:ss"),
+          message: 'ok',
+          status: 'received'
+        }); 
         clearInterval(bot);
 
       }, 1000);
