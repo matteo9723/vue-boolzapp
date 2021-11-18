@@ -20,7 +20,7 @@
 <!-- collegamento per non far apparire errore in console-->  
   <link rel="shortcut icon" href="#">
 
-  <title>#</title>
+  <title>vue-boolzapp</title>
 
 </head>
 
@@ -54,6 +54,7 @@
           <!-- main  -->
 
           <div class="main">
+
             <section class="notifiche">
               <i class="fas fa-bell-slash"></i>
               <div class="action">
@@ -61,14 +62,17 @@
                 <span>Attiva notifiche desktop</span>
               </div>
             </section>
+
             <section class="input">
-              <input type="text" placeholder="cerca o inizia una nuova chat">
+              <input v-model='search' @keyup='searchUser' type="text" placeholder="cerca o inizia una nuova chat">
               <i class="fas fa-search"></i>
             </section>
+
             <section class="utenti">
 
               <div v-for='(contact,index) in contacts' class="utente" 
                :class='{"active": contact===user_selected}' 
+               v-if='contact.visible==true'
                @click='selected(contact)'  >
                 <img :src="`img/avatar${contact.avatar}.jpg`" alt="">
                 <div class="utente-more">
@@ -77,33 +81,6 @@
                   <div class="data"> {{last_date[index]}}</div>
                 </div>
               </div>
-
-              <!-- <div class="utente">
-                <img src="img/avatar_2.jpg" alt="">
-                <div class="utente-more">
-                  <div class="nome">Antonio</div>
-                  <div class="ultimo-msg">Tutto fatto!...</div>
-                  <div class="data"> 10/01/2020 alle 13.45</div>
-                </div>
-              </div>
-
-              <div class="utente">
-                <img src="img/avatar_3.jpg" alt="">
-                <div class="utente-more">
-                  <div class="nome">Francesco</div>
-                  <div class="ultimo-msg">Tutto fatto!...</div>
-                  <div class="data"> 10/01/2020 alle 13.45</div>
-                </div>
-              </div>
-
-              <div class="utente">
-                <img src="img/avatar_4.jpg" alt="">
-                <div class="utente-more">
-                  <div class="nome">Ugo</div>
-                  <div class="ultimo-msg">Tutto fatto!...</div>
-                  <div class="data"> 10/01/2020 alle 13.45</div>
-                </div>
-              </div> -->
 
             </section>
 
@@ -129,6 +106,7 @@
           </div>
 
           <div class="main">
+
             <div class="container-chat">
 
               <section v-for='(valore,index) in user_selected.messages' :class="valore.status" >
@@ -137,29 +115,17 @@
                   <div class="data">{{valore.date}}</div>
                 </div>
               </section>
-              <!-- <section class="sent" >
-                <div class="user green">
-                  <p>hai portato a spasso il cane?</p>
-                  <div class="data">10/01/2020 15:30:55</div>
-                </div>
-              </section>
-              <section class="received" >
-                <div class="user white">
-                  <p>hai portato a spasso il cane?</p>
-                  <div class="data">10/01/2020 15:30:55</div>
-                </div>
-              </section> -->
-              
-              
-  
+        
             </div>
           
           </div>
+
           <div class="bottom">
             <i class="far fa-smile"></i>
-            <input v-model="x" @keyup.enter='saluto(x)' type="text" placeholder="scrivi un messaggio">
+            <input v-model="new_msg" @keyup.enter='printNewMsg(new_msg)' type="text" placeholder="scrivi un messaggio">
             <i class="fas fa-microphone"></i>
           </div>
+
         </div>
       </div>
     </div>

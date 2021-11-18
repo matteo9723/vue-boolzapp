@@ -3,10 +3,10 @@
 *{
   margin: 0;
   padding: 0;
- box-sizing: border-box;
- font-family: 'Lato', sans-serif;
- font-family: 'Open Sans', sans-serif;
- font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .container{
@@ -14,8 +14,6 @@
   width: 100%;
   position: relative;;
 }
-
-
 
 .container-top{
   height: 15vh;
@@ -34,7 +32,6 @@
   min-width: 800px;
   height: 95vh;
   position: absolute;
-  /* border: 1px solid black; */
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
@@ -136,6 +133,7 @@ i{
 p{
   font-size: 15px;
 }
+
 /* BOX-LEFT */
 
   /* top  */
@@ -167,7 +165,6 @@ p{
 }
 
 .box-left .top .avatar img{
-  /* border: 1px solid black; */
   border-radius: 50%;
   height: 40px;
   width: 40px;
@@ -218,7 +215,6 @@ p{
 
 .box-left .main .input{
   position: relative;
- 
 }
 
 .box-left .main .input i{
@@ -236,11 +232,12 @@ p{
   border:1px solid  #E8E8E8;
 }
 
+  /* utenti  */
+
 .box-left .main .utenti {
  margin-right: 10px;
  border:1px solid #E8E8E8;
  height: calc(100% - 92px);
-
 }
 
 .box-left .main .utenti .utente {
@@ -252,21 +249,14 @@ p{
 }
 
 .box-left .main .utenti .utente:hover {
-
   background-color: #c9c9c9;
-
 }
 
 .box-left .main .utenti .utente.active {
-
   background-color: #c9c9c9;
-
 }
 
-
-
 .box-left .main .utenti .utente img {
-  /* border: 1px solid black; */
   border-radius: 50%;
   height: 40px;
   width: 40px;
@@ -287,7 +277,11 @@ p{
 }
 
 
+
+
 /* BOX-RIGHT */
+
+  /* top  */
 
 .box-right .top{
   display: flex;
@@ -322,7 +316,6 @@ p{
 }
 
 .box-right .top .avatar img{
-  /* border: 1px solid black; */
   border-radius: 50%;
   height: 40px;
   width: 40px;
@@ -337,7 +330,7 @@ p{
 .box-right .main{
   background-image:url('/img/mine.jpg');
   overflow:auto;
-} 
+}
 
  /* bottom  */
 

@@ -84,15 +84,6 @@ const app = new Vue ({
           ],
       },
     ],
-
-    last_msg:[],
-    last_date:[],
-
-    green:'green',
-    white:'white',
-    x:'',
-    
-    
     
     user_selected:
     {
@@ -116,29 +107,35 @@ const app = new Vue ({
             status: 'received'
           }
         ],
-      },
+    },
     
-
+    last_msg:[],
+    last_date:[],
     last_date_selected:'10/01/2020 16:15:22',
-    
+
+    // classi_messaggi:
+
+    green:'green',
+    white:'white',
+
+    // input
+
+    new_msg:'',
+    search:'',
   },
-
-
+  
+  
   mounted(){
     
     for (let contact in this.contacts){
       this.last_msg.push(this.contacts[contact].messages[this.contacts[contact].messages.length-1].message.substring(0,30)+'...')
-    }
+    };
     for (let contact in this.contacts){
       this.last_date.push(this.contacts[contact].messages[this.contacts[contact].messages.length-1].date)
-    }
+    };
+    
+    
   
-     
-    
-    
-    
-    
-    
   },
   
   methods:{
@@ -150,15 +147,15 @@ const app = new Vue ({
       
     },
     
-    saluto(x){
+    printNewMsg(msg){
       this.user_selected.messages.push(
        {
         date: '10/01/2020 16:15:22',
-        message: x,
+        message: msg,
         status: 'sent'
        });
       
-      let z = setInterval(() => {
+      let bot = setInterval(() => {
 
         this.user_selected.messages.push(
           {
@@ -166,12 +163,24 @@ const app = new Vue ({
            message: 'ok',
            status: 'received'
           });
-        clearInterval(z);
+        clearInterval(bot);
 
       }, 1000);
 
+    },
+
+    searchUser(){
+    
+      for(let i in this.contacts){
+        if(this.contacts[i].name.toLowerCase().includes(this.search)){
+          this.contacts[i].visible=true
+        }else{
+          this.contacts[i].visible=false
+        }
+      }
       
     }
+
   }
 
 });
