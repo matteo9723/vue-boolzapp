@@ -327,7 +327,7 @@ p{
  /* main  */
 
 .box-right .main{
-  background-image:url('/img/mine.jpg');
+  background-image:url('../img/mine.jpg');
   overflow-y:scroll;
 }
 

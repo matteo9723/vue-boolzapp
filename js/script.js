@@ -141,10 +141,10 @@ const app = new Vue ({
   mounted(){
     
     for (let contact in this.contacts){
-      this.last_msg.push(this.contacts[contact].messages[this.contacts[contact].messages.length-1].message.substring(0,30)+'...')
+      this.last_msg.push(this.contacts[contact].messages[this.contacts[contact].messages.length-1].message.substring(0,30)+'...');
     };
     for (let contact in this.contacts){
-      this.last_date.push(this.contacts[contact].messages[this.contacts[contact].messages.length-1].date)
+      this.last_date.push(this.contacts[contact].messages[this.contacts[contact].messages.length-1].date);
     };
     
     
@@ -169,6 +169,7 @@ const app = new Vue ({
         status: 'sent'
        });
       
+       this.new_msg='';
       let bot = setInterval(() => {
 
         this.last_date_selected= dayjs().format("DD/MM/YYYY HH:mm:ss");
@@ -192,9 +193,9 @@ const app = new Vue ({
     
       for(let i in this.contacts){
         if(this.contacts[i].name.toLowerCase().includes(this.search)){
-          this.contacts[i].visible=true
+          this.contacts[i].visible=true;
         }else{
-          this.contacts[i].visible=false
+          this.contacts[i].visible=false;
         }
       }
       
